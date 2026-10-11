@@ -1,0 +1,569 @@
+{
+  "name": "dagney",
+  "anchor": "feet",
+  "atlas": {
+    "src": "characters/dagney/atlas.png?v=2",
+    "w": 816,
+    "h": 816
+  },
+  "extended": {
+    "src": "characters/dagney/atlas-extended.png?v=1",
+    "w": 816,
+    "h": 816
+  },
+  "animations": {
+    "idle": {
+      "fps": 0.333,
+      "loop": true,
+      "frames": [
+        "idle0",
+        "idle1",
+        "idle2",
+        "idle3"
+      ]
+    },
+    "walk": {
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        "walkright0",
+        "walkright1",
+        "walkright2",
+        "walkright3",
+        "walkright4",
+        "walkright5"
+      ]
+    },
+    "talk": {
+      "fps": 6,
+      "loop": true,
+      "frames": [
+        "tallright0",
+        "tallright1",
+        "tallright2",
+        "tallright3"
+      ]
+    },
+    "pick-up": {
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        "pickup0",
+        "pickup1",
+        "pickup2",
+        "pickup3",
+        "pickup2",
+        "pickup1",
+        "pickup0"
+      ]
+    },
+    "reach": {
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        "reachright0",
+        "reachright1",
+        "reachright2",
+        "reachright3",
+        "reachright2",
+        "reachright1",
+        "reachright0"
+      ]
+    },
+    "walk-up": {
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        "walkup0",
+        "walkup1",
+        "walkup2",
+        "walkup3",
+        "walkup4",
+        "walkup5"
+      ]
+    },
+    "walk-down": {
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        "walkdown0",
+        "walkdown1",
+        "walkdown2",
+        "walkdown3",
+        "walkdown4",
+        "walkdown5"
+      ]
+    },
+    "crouch": {
+      "fps": 2,
+      "loop": true,
+      "frames": [
+        "crouch0"
+      ]
+    },
+    "push_or_pull": {
+      "fps": 2,
+      "loop": true,
+      "frames": [
+        "push"
+      ]
+    },
+    "inspect": {
+      "fps": 2,
+      "loop": true,
+      "frames": [
+        "bow"
+      ]
+    },
+    "point": {
+      "fps": 2,
+      "loop": true,
+      "frames": [
+        "point"
+      ]
+    },
+    "crossed": {
+      "fps": 2,
+      "loop": true,
+      "frames": [
+        "crossed"
+      ]
+    },
+    "headache": {
+      "fps": 2,
+      "loop": true,
+      "frames": [
+        "headache"
+      ]
+    }
+  },
+  "frames": {
+    "idle0": {
+      "x": 30,
+      "y": 12,
+      "w": 56,
+      "h": 168,
+      "ax": 28,
+      "ay": 168
+    },
+    "idle1": {
+      "x": 154,
+      "y": 12,
+      "w": 55,
+      "h": 168,
+      "ax": 28,
+      "ay": 168
+    },
+    "idle2": {
+      "x": 275,
+      "y": 13,
+      "w": 54,
+      "h": 167,
+      "ax": 28,
+      "ay": 167
+    },
+    "idle3": {
+      "x": 398,
+      "y": 12,
+      "w": 54,
+      "h": 168,
+      "ax": 27,
+      "ay": 168
+    },
+    "wallright0": {
+      "x": 518,
+      "y": 11,
+      "w": 44,
+      "h": 167,
+      "ax": 26,
+      "ay": 167
+    },
+    "wallright1": {
+      "x": 642,
+      "y": 11,
+      "w": 58,
+      "h": 166,
+      "ax": 26,
+      "ay": 166
+    },
+    "walkright0": {
+      "x": 17,
+      "y": 214,
+      "w": 91,
+      "h": 163,
+      "ax": 39,
+      "ay": 163
+    },
+    "walkright1": {
+      "x": 140,
+      "y": 215,
+      "w": 76,
+      "h": 163,
+      "ax": 42,
+      "ay": 163
+    },
+    "walkright2": {
+      "x": 272,
+      "y": 214,
+      "w": 52,
+      "h": 165,
+      "ax": 28,
+      "ay": 165
+    },
+    "walkright3": {
+      "x": 385,
+      "y": 215,
+      "w": 77,
+      "h": 163,
+      "ax": 36,
+      "ay": 163
+    },
+    "walkright4": {
+      "x": 504,
+      "y": 216,
+      "w": 87,
+      "h": 162,
+      "ax": 40,
+      "ay": 162
+    },
+    "walkright5": {
+      "x": 630,
+      "y": 216,
+      "w": 60,
+      "h": 163,
+      "ax": 35,
+      "ay": 163
+    },
+    "tallright0": {
+      "x": 35,
+      "y": 415,
+      "w": 38,
+      "h": 166,
+      "ax": 21,
+      "ay": 166
+    },
+    "tallright1": {
+      "x": 161,
+      "y": 416,
+      "w": 33,
+      "h": 166,
+      "ax": 18,
+      "ay": 166
+    },
+    "tallright2": {
+      "x": 284,
+      "y": 415,
+      "w": 32,
+      "h": 167,
+      "ax": 16,
+      "ay": 167
+    },
+    "tallright3": {
+      "x": 405,
+      "y": 417,
+      "w": 34,
+      "h": 164,
+      "ax": 19,
+      "ay": 164
+    },
+    "pickup0": {
+      "x": 517,
+      "y": 417,
+      "w": 47,
+      "h": 164,
+      "ax": 22,
+      "ay": 164
+    },
+    "pickup1": {
+      "x": 636,
+      "y": 424,
+      "w": 61,
+      "h": 157,
+      "ax": 28,
+      "ay": 157
+    },
+    "pickup2": {
+      "x": 20,
+      "y": 651,
+      "w": 71,
+      "h": 131,
+      "ax": 35,
+      "ay": 131
+    },
+    "pickup3": {
+      "x": 145,
+      "y": 659,
+      "w": 75,
+      "h": 123,
+      "ax": 32,
+      "ay": 123
+    },
+    "reachright0": {
+      "x": 272,
+      "y": 618,
+      "w": 54,
+      "h": 165,
+      "ax": 23,
+      "ay": 165
+    },
+    "reachright1": {
+      "x": 387,
+      "y": 619,
+      "w": 80,
+      "h": 163,
+      "ax": 31,
+      "ay": 163
+    },
+    "reachright2": {
+      "x": 516,
+      "y": 622,
+      "w": 86,
+      "h": 160,
+      "ax": 25,
+      "ay": 160
+    },
+    "reachright3": {
+      "x": 633,
+      "y": 620,
+      "w": 90,
+      "h": 162,
+      "ax": 29,
+      "ay": 162
+    },
+    "walkup0": {
+      "x": 27,
+      "y": 9,
+      "w": 65,
+      "h": 184,
+      "ax": 31,
+      "ay": 184,
+      "sheet": "extended",
+      "fit": 0.913
+    },
+    "walkup1": {
+      "x": 150,
+      "y": 9,
+      "w": 63,
+      "h": 183,
+      "ax": 31,
+      "ay": 183,
+      "sheet": "extended",
+      "fit": 0.918
+    },
+    "walkup2": {
+      "x": 264,
+      "y": 8,
+      "w": 74,
+      "h": 185,
+      "ax": 39,
+      "ay": 185,
+      "sheet": "extended",
+      "fit": 0.9081
+    },
+    "walkup3": {
+      "x": 387,
+      "y": 8,
+      "w": 72,
+      "h": 177,
+      "ax": 38,
+      "ay": 177,
+      "sheet": "extended",
+      "fit": 0.9492
+    },
+    "walkup4": {
+      "x": 515,
+      "y": 8,
+      "w": 65,
+      "h": 187,
+      "ax": 32,
+      "ay": 187,
+      "sheet": "extended",
+      "fit": 0.8984
+    },
+    "walkup5": {
+      "x": 636,
+      "y": 8,
+      "w": 64,
+      "h": 176,
+      "ax": 31,
+      "ay": 176,
+      "sheet": "extended",
+      "fit": 0.9545
+    },
+    "walkdown0": {
+      "x": 27,
+      "y": 209,
+      "w": 64,
+      "h": 189,
+      "ax": 32,
+      "ay": 189,
+      "sheet": "extended",
+      "fit": 0.8889
+    },
+    "walkdown1": {
+      "x": 150,
+      "y": 209,
+      "w": 64,
+      "h": 189,
+      "ax": 31,
+      "ay": 189,
+      "sheet": "extended",
+      "fit": 0.8889
+    },
+    "walkdown2": {
+      "x": 270,
+      "y": 209,
+      "w": 73,
+      "h": 189,
+      "ax": 33,
+      "ay": 189,
+      "sheet": "extended",
+      "fit": 0.8889
+    },
+    "walkdown3": {
+      "x": 394,
+      "y": 209,
+      "w": 76,
+      "h": 190,
+      "ax": 32,
+      "ay": 190,
+      "sheet": "extended",
+      "fit": 0.8842
+    },
+    "walkdown4": {
+      "x": 515,
+      "y": 209,
+      "w": 63,
+      "h": 189,
+      "ax": 31,
+      "ay": 189,
+      "sheet": "extended",
+      "fit": 0.8889
+    },
+    "walkdown5": {
+      "x": 635,
+      "y": 209,
+      "w": 65,
+      "h": 190,
+      "ax": 32,
+      "ay": 190,
+      "sheet": "extended",
+      "fit": 0.8842
+    },
+    "idlefront": {
+      "x": 27,
+      "y": 412,
+      "w": 60,
+      "h": 176,
+      "ax": 29,
+      "ay": 176,
+      "sheet": "extended",
+      "fit": 0.9545
+    },
+    "lookdown": {
+      "x": 151,
+      "y": 422,
+      "w": 58,
+      "h": 166,
+      "ax": 28,
+      "ay": 166,
+      "sheet": "extended"
+    },
+    "back": {
+      "x": 274,
+      "y": 412,
+      "w": 59,
+      "h": 176,
+      "ax": 29,
+      "ay": 176,
+      "sheet": "extended",
+      "fit": 0.9545
+    },
+    "crouch0": {
+      "x": 386,
+      "y": 473,
+      "w": 76,
+      "h": 108,
+      "ax": 38,
+      "ay": 108,
+      "sheet": "extended"
+    },
+    "crouch1": {
+      "x": 502,
+      "y": 485,
+      "w": 89,
+      "h": 98,
+      "ax": 44,
+      "ay": 98,
+      "sheet": "extended"
+    },
+    "push": {
+      "x": 613,
+      "y": 439,
+      "w": 115,
+      "h": 148,
+      "ax": 55,
+      "ay": 148,
+      "sheet": "extended"
+    },
+    "point": {
+      "x": 25,
+      "y": 598,
+      "w": 93,
+      "h": 191,
+      "ax": 30,
+      "ay": 191,
+      "sheet": "extended",
+      "fit": 0.8796
+    },
+    "bow": {
+      "x": 144,
+      "y": 629,
+      "w": 89,
+      "h": 158,
+      "ax": 27,
+      "ay": 158,
+      "sheet": "extended"
+    },
+    "pockets": {
+      "x": 272,
+      "y": 597,
+      "w": 61,
+      "h": 191,
+      "ax": 29,
+      "ay": 191,
+      "sheet": "extended",
+      "fit": 0.8796
+    },
+    "crossed": {
+      "x": 394,
+      "y": 597,
+      "w": 63,
+      "h": 192,
+      "ax": 31,
+      "ay": 192,
+      "sheet": "extended",
+      "fit": 0.875
+    },
+    "headache": {
+      "x": 504,
+      "y": 598,
+      "w": 84,
+      "h": 191,
+      "ax": 42,
+      "ay": 191,
+      "sheet": "extended",
+      "fit": 0.8796
+    },
+    "salute": {
+      "x": 627,
+      "y": 598,
+      "w": 81,
+      "h": 191,
+      "ax": 42,
+      "ay": 191,
+      "sheet": "extended",
+      "fit": 0.8796
+    }
+  }
+}

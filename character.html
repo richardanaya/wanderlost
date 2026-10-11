@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adventurer</title>
+<style>
+  html, body {
+    margin: 0;
+    background: #12141a;
+    color: #e7e2d6;
+    font-family: "IBM Plex Mono", "Liberation Mono", ui-monospace, monospace;
+  }
+
+  h1 {
+    margin: 20px 24px 8px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    padding: 16px 24px 32px;
+  }
+
+  .card {
+    background: #1b1e27;
+    border: 1px solid #2c3140;
+  }
+
+  .stage {
+    position: relative;
+    height: 280px;
+    overflow: visible;
+  }
+
+  .ground {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 36px;
+    height: 2px;
+    background: #3c4254;
+  }
+
+  .character {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    transform-origin: 0 0;
+  }
+
+  .character img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    image-rendering: pixelated;
+  }
+
+  .name {
+    margin: 0;
+    padding: 8px 10px 10px;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+<h1>Adventurer</h1>
+<main id="gallery"></main>
+<h1>Princess</h1>
+<main id="princess"></main>
+<h1>Wanderer</h1>
+<main id="wanderer"></main>
+<h1>Dagney</h1>
+<main id="dagney"></main>
+<script src="character.js?v=26"></script>
+<script>
+  const labels = {
+    idle: "Idle",
+    "idle-front": "Idle front",
+    headache: "Headache",
+    talk: "Talk",
+    walk: "Walk",
+    "walk-up": "Walk up",
+    "walk-down": "Walk down",
+    "look-up": "Look up",
+    "look-down": "Look down",
+    crouch: "Crouch",
+    push_or_pull: "Push or pull",
+    pull: "Pull",
+    inspect: "Inspect",
+    point: "Point",
+    crossed: "Arms crossed",
+    headache: "Headache",
+    reach: "Reach",
+    "pick-up": "Pick up",
+    "pick-up-back": "Pick up back",
+    "pick-up-high": "Pick up high",
+    kneel: "Kneel",
+    wall: "Wall",
+    tall: "Tall",
+    back: "Back",
+    bow: "Bow",
+    pockets: "Pockets",
+    salute: "Salute"
+  };
+
+  const actors = [];
+
+  function layout(actor, stage) {
+    const idleId = actor.manifest.animations.idle.frames[0];
+    const scale = 200 / actor.manifest.frames[idleId].h;
+    actor.setScale(scale);
+    actor.position(stage.clientWidth / 2, stage.clientHeight - 36);
+  }
+
+  function mount(source, gallery) {
+    for (const name of Object.keys(source.manifest.animations)) {
+      const card = document.createElement("article");
+      card.className = "card";
+      const stage = document.createElement("div");
+      stage.className = "stage";
+      const ground = document.createElement("div");
+      ground.className = "ground";
+      const caption = document.createElement("p");
+      caption.className = "name";
+      caption.textContent = labels[name] || name;
+      stage.appendChild(ground);
+      card.append(stage, caption);
+      gallery.appendChild(card);
+
+      const actor = new Character(source.manifest, source.atlas);
+      actor.play(name);
+      stage.appendChild(actor.element);
+      actors.push({ actor, stage, caption, label: labels[name] || name });
+      layout(actor, stage);
+    }
+  }
+
+  Character.load("characters/adventurer/character.json?v=ext13").then((source) => {
+    mount(source, document.getElementById("gallery"));
+  });
+
+  Character.load("characters/princess/character.json?v=ext1").then((source) => {
+    mount(source, document.getElementById("princess"));
+  });
+
+  Character.load("characters/wanderer/character.json?v=ext3").then((source) => {
+    mount(source, document.getElementById("wanderer"));
+  });
+
+  Character.load("characters/dagney/character.json?v=4").then((source) => {
+    mount(source, document.getElementById("dagney"));
+  });
+
+  window.addEventListener("resize", () => {
+    for (const entry of actors) layout(entry.actor, entry.stage);
+  });
+
+  let last = performance.now();
+  function tick(now) {
+    const dt = Math.min(0.05, (now - last) / 1000);
+    last = now;
+    for (const entry of actors) {
+      entry.actor.update(dt);
+      const id = entry.actor.animation.frames[entry.actor.frameIndex];
+      const number = id.match(/(\d+)$/);
+      entry.caption.textContent = number ? entry.label + " " + number[1] : entry.label;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+</script>
+</body>
+</html>

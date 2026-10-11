@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dagney</title>
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    background: #0b0c10;
+    color: #f4f1ea;
+  }
+
+  #fit {
+    width: 100vw;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  #stage { position: relative; flex: 0 0 auto; }
+
+  #game {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1792px;
+    height: 1344px;
+    display: grid;
+    grid-template-columns: 29px 1730px 33px;
+    grid-template-rows: 124px 43px 1143px 34px;
+    transform-origin: top left;
+    user-select: none;
+  }
+
+  #game img { display: block; image-rendering: pixelated; }
+
+  .toolbar { grid-column: 1 / -1; display: flex; height: 124px; }
+  .verb {
+    padding: 0; border: 0; background: transparent; cursor: pointer;
+    position: relative; flex: 0 0 auto;
+  }
+  .verb img { pointer-events: none; }
+  .verb:hover img, .verb:focus-visible img { filter: brightness(1.22); }
+  .verb:active img { filter: brightness(0.78); }
+  .verb[aria-pressed="true"] img { filter: brightness(1.28) saturate(1.15); }
+  .verb[aria-pressed="true"]::after {
+    content: "";
+    position: absolute;
+    inset: 10px 8px 12px;
+    box-shadow: inset 0 0 0 3px #f0d48a;
+    pointer-events: none;
+  }
+  .verb:focus-visible { outline: none; }
+  .toolbar-fill { width: 723px; height: 124px; }
+
+  .message { grid-column: 1 / -1; position: relative; height: 43px; }
+  .message img { width: 1792px; height: 43px; }
+  #line {
+    position: absolute; left: 0; top: 0;
+    width: 1792px; height: 43px; image-rendering: pixelated;
+  }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+  }
+
+  #play { position: relative; overflow: hidden; background: #07080c; }
+  #scene { display: block; width: 100%; height: 100%; image-rendering: pixelated; }
+  .character {
+    position: absolute; left: 0; top: 0; width: 0; height: 0;
+    z-index: 2; pointer-events: none;
+  }
+  .spots { position: absolute; inset: 0; }
+  .hotspot {
+    position: absolute; z-index: 3; margin: 0; padding: 0;
+    border: 0; background: transparent; cursor: pointer;
+  }
+  #play:not(.verb-look) .hotspot { pointer-events: none; }
+  .frame-left { width: 29px; height: 1143px; }
+  .frame-right { width: 33px; height: 1143px; }
+  .frame-bottom { grid-column: 1 / -1; width: 1792px; height: 34px; }
+</style>
+</head>
+<body>
+<div id="fit">
+  <div id="stage">
+  <div id="game">
+    <div class="toolbar" role="toolbar" aria-label="Actions">
+      <button type="button" class="verb" data-verb="look" aria-pressed="false" title="Look">
+        <img src="ui/verb-look.png" alt="Look" width="145" height="124">
+      </button>
+      <button type="button" class="verb" data-verb="talk" aria-pressed="false" title="Talk">
+        <img src="ui/verb-talk.png" alt="Talk" width="128" height="124">
+      </button>
+      <button type="button" class="verb" data-verb="walk" aria-pressed="false" title="Walk">
+        <img src="ui/verb-walk.png" alt="Walk" width="129" height="124">
+      </button>
+      <button type="button" class="verb" data-verb="take" aria-pressed="false" title="Take">
+        <img src="ui/verb-take.png" alt="Take" width="132" height="124">
+      </button>
+      <button type="button" class="verb" data-verb="use" aria-pressed="false" title="Use">
+        <img src="ui/verb-use.png" alt="Use" width="132" height="124">
+      </button>
+      <button type="button" class="verb" data-verb="search" aria-pressed="false" title="Search">
+        <img src="ui/verb-search.png" alt="Search" width="133" height="124">
+      </button>
+      <button type="button" class="verb" data-verb="give" aria-pressed="false" title="Give">
+        <img src="ui/verb-give.png" alt="Give" width="140" height="124">
+      </button>
+      <button type="button" class="verb" data-verb="point" aria-pressed="false" title="Point">
+        <img src="ui/verb-point.png" alt="Point" width="130" height="124">
+      </button>
+      <img class="toolbar-fill" src="ui/toolbar-fill.png" alt="">
+    </div>
+    <div class="message">
+      <img src="ui/message-bar.png" alt="">
+      <canvas id="line" width="1792" height="43" aria-hidden="true"></canvas>
+      <p id="line-text" class="sr-only">The train is ready to depart.</p>
+    </div>
+    <img class="frame-left" src="ui/frame-left.png" alt="">
+    <div id="play" aria-label="Play area">
+      <img id="scene" src="scenes/dagney.png?v=2" alt="A night train waiting at a mountain station. The platform holds a bench, luggage, and a luggage cart." width="1730" height="1143">
+      <div class="spots">
+        <button type="button" class="hotspot" data-id="sky" data-name="the sky" style="left:36%;top:0;width:64%;height:18%"></button>
+        <button type="button" class="hotspot" data-id="mountains" data-name="the mountains" style="left:18%;top:22%;width:82%;height:16%"></button>
+        <button type="button" class="hotspot" data-id="roof" data-name="the roof" style="left:0;top:0;width:54%;height:24%"></button>
+        <button type="button" class="hotspot" data-id="moon" data-name="the moon" style="left:86%;top:2%;width:12%;height:14%"></button>
+        <button type="button" class="hotspot" data-id="wires" data-name="the wires" style="left:40%;top:24%;width:16%;height:22%"></button>
+        <button type="button" class="hotspot" data-id="clock" data-name="the clock" style="left:1%;top:30%;width:8%;height:16%"></button>
+        <button type="button" class="hotspot" data-id="signal" data-name="the signal" style="left:9%;top:31%;width:8%;height:14%"></button>
+        <button type="button" class="hotspot" data-id="train" data-name="the Taggart Comet" style="left:44%;top:32%;width:56%;height:34%"></button>
+        <button type="button" class="hotspot" data-id="bench" data-name="the bench" style="left:5%;top:50%;width:14%;height:14%"></button>
+        <button type="button" class="hotspot" data-id="luggage" data-name="the luggage" style="left:17%;top:48%;width:14%;height:15%"></button>
+        <button type="button" class="hotspot" data-id="platform" data-name="the platform" style="left:0;top:60%;width:62%;height:18%"></button>
+        <button type="button" class="hotspot" data-id="cart" data-name="the cart" style="left:0;top:72%;width:14%;height:16%"></button>
+        <button type="button" class="hotspot" data-id="tracks" data-name="the John Galt Line" style="left:52%;top:54%;width:48%;height:46%"></button>
+      </div>
+    </div>
+    <img class="frame-right" src="ui/frame-right.png" alt="">
+    <img class="frame-bottom" src="ui/frame-bottom.png" alt="">
+  </div>
+  </div>
+</div>
+<script src="ui/font.js"></script>
+<script src="character.js?v=26"></script>
+<script src="polygon.js?v=6"></script>
+<script>
+  const lines = {
+    look: "Look at…",
+    talk: "Talk to…",
+    walk: "Walk to…",
+    take: "Take…",
+    use: "Use…",
+    search: "Search…",
+    give: "Give…",
+    point: "Point at…"
+  };
+  const canvas = document.getElementById("line");
+  const lineText = document.getElementById("line-text");
+  const ctx = canvas.getContext("2d");
+  const atlas = new Image();
+  atlas.src = "ui/font-atlas.png";
+
+  function drawLine(text) {
+    lineText.textContent = text;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (!atlas.complete || !atlas.naturalWidth) return;
+    ctx.imageSmoothingEnabled = false;
+    const scale = 24 / FONT.capHeight;
+    const tracking = 20 * scale;
+    const baseline = 33;
+    let x = 24;
+    for (const ch of text) {
+      const glyph = FONT.glyphs[ch];
+      if (!glyph) { x += 10; continue; }
+      if (glyph.space) { x += glyph.w * scale; continue; }
+      const dw = Math.max(1, Math.round(glyph.w * scale));
+      const dh = Math.max(1, Math.round(glyph.h * scale));
+      const dy = Math.round(baseline - (glyph.baseline - glyph.y) * scale);
+      ctx.drawImage(atlas, glyph.x, glyph.y, glyph.w, glyph.h, Math.round(x), dy, dw, dh);
+      x += dw + tracking;
+    }
+  }
+
+  const verbs = [...document.querySelectorAll(".verb")];
+  let verb = null;
+  function select(button) {
+    for (const other of verbs) other.setAttribute("aria-pressed", other === button ? "true" : "false");
+    verb = button.dataset.verb;
+    play.classList.toggle("verb-look", verb === "look");
+    drawLine(lines[verb]);
+  }
+  for (const button of verbs) button.addEventListener("click", () => select(button));
+  const held = new Set();
+  window.addEventListener("keydown", (event) => {
+    const index = "12345678".indexOf(event.key);
+    if (index >= 0) { event.preventDefault(); select(verbs[index]); return; }
+    const key = event.key.toLowerCase();
+    if (key === "w" || key === "a" || key === "s" || key === "d") {
+      held.add(key);
+      event.preventDefault();
+    }
+  });
+  window.addEventListener("keyup", (event) => held.delete(event.key.toLowerCase()));
+  window.addEventListener("blur", () => held.clear());
+
+  const game = document.getElementById("game");
+  const stage = document.getElementById("stage");
+  function fit() {
+    const scale = Math.min(window.innerWidth / 1792, window.innerHeight / 1344);
+    game.style.transform = "scale(" + scale + ")";
+    stage.style.width = Math.floor(1792 * scale) + "px";
+    stage.style.height = Math.floor(1344 * scale) + "px";
+  }
+  window.addEventListener("resize", fit);
+  fit();
+  atlas.onload = () => drawLine(lineText.textContent);
+  if (atlas.complete) drawLine(lineText.textContent);
+
+  const play = document.getElementById("play");
+  const PLAY_W = 1730;
+  const PLAY_H = 1143;
+  // Pale concrete of the platform. The near edge follows the lip above the grass.
+  const ground = [
+    [2, 1115],
+    [1121, 735],
+    [696, 695],
+    [658, 707],
+    [597, 699],
+    [615, 640],
+    [541, 649],
+    [523, 719],
+    [365, 737],
+    [359, 801],
+    [296, 805],
+    [270, 793],
+    [269, 726],
+    [194, 747],
+    [120, 733],
+    [25, 761],
+    [25, 797],
+    [123, 784],
+    [226, 832],
+    [228, 914],
+    [196, 949],
+    [13, 983]
+  ];
+  // Open deck in front of the bench, facing the train.
+  const spot = [480, 860];
+  let dagney = null;
+  let goal = null;
+  let last = 0;
+
+  function inside(x, y, polygon) {
+    let hit = false;
+    for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+      const [xi, yi] = polygon[i];
+      const [xj, yj] = polygon[j];
+      const crosses = (yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
+      if (crosses) hit = !hit;
+    }
+    return hit;
+  }
+
+  function closestOnGround(x, y) {
+    if (inside(x, y, ground)) return [x, y];
+    let best = ground[0];
+    let bestDist = Infinity;
+    for (let i = 0; i < ground.length; i++) {
+      const [ax, ay] = ground[i];
+      const [bx, by] = ground[(i + 1) % ground.length];
+      const abx = bx - ax;
+      const aby = by - ay;
+      const t = Math.max(0, Math.min(1, ((x - ax) * abx + (y - ay) * aby) / (abx * abx + aby * aby)));
+      const px = ax + abx * t;
+      const py = ay + aby * t;
+      const dist = (px - x) ** 2 + (py - y) ** 2;
+      if (dist < bestDist) {
+        bestDist = dist;
+        best = [px, py];
+      }
+    }
+    return best;
+  }
+
+  function onGroundPoint(x, y) {
+    if (inside(x, y, ground)) return true;
+    const [px, py] = closestOnGround(x, y);
+    return (px - x) ** 2 + (py - y) ** 2 <= 4;
+  }
+
+  function onGround(x, y) {
+    const scale = window.actor ? window.actor.scale : 1;
+    const halfW = Math.max(8, 12 * scale);
+    const halfH = Math.max(3, 4 * scale);
+    for (const px of [x - halfW, x, x + halfW]) {
+      for (const py of [y - halfH, y + halfH]) {
+        if (!onGroundPoint(px, py)) return false;
+      }
+    }
+    return true;
+  }
+
+  function stepInside(x, y, nx, ny) {
+    if (onGround(nx, ny)) return [nx, ny];
+    if (onGround(nx, y)) return [nx, y];
+    if (onGround(x, ny)) return [x, ny];
+    return [x, y];
+  }
+
+  function depthScale(y) {
+    const t = Math.max(0, Math.min(1, (y - 730) / 280));
+    return (1.15 + t * 0.55) * 1.15;
+  }
+
+  function frame(now) {
+    const dt = Math.min(0.05, (now - last) / 1000 || 0);
+    last = now;
+    const ax = (held.has("d") ? 1 : 0) - (held.has("a") ? 1 : 0);
+    const ay = (held.has("s") ? 1 : 0) - (held.has("w") ? 1 : 0);
+    if (dagney && (ax || ay)) {
+      goal = null;
+      const len = Math.hypot(ax, ay);
+      const step = 260 * dt;
+      const [nx, ny] = stepInside(dagney.x, dagney.y, dagney.x + (ax / len) * step, dagney.y + (ay / len) * step);
+      dagney.position(nx, ny).setScale(depthScale(ny));
+      const clip = Math.abs(ay) > Math.abs(ax)
+        ? (ay < 0 ? "walk-up" : "walk-down")
+        : "walk";
+      if (clip === "walk") dagney.face(ax);
+      else dagney.face(1);
+      if (dagney.animationName !== clip) dagney.play(clip);
+    } else if (dagney && goal) {
+      const dx = goal[0] - dagney.x;
+      const dy = goal[1] - dagney.y;
+      const dist = Math.hypot(dx, dy);
+      const step = 260 * dt;
+      const [nx, ny] = dist <= step
+        ? stepInside(dagney.x, dagney.y, goal[0], goal[1])
+        : stepInside(dagney.x, dagney.y, dagney.x + (dx / dist) * step, dagney.y + (dy / dist) * step);
+      const moved = nx !== dagney.x || ny !== dagney.y;
+      const arrived = Math.hypot(goal[0] - nx, goal[1] - ny) <= 1;
+      if (!moved || arrived) {
+        if (moved) dagney.position(nx, ny).setScale(depthScale(ny));
+        dagney.play("idle");
+        goal = null;
+      } else {
+        dagney.position(nx, ny).setScale(depthScale(ny));
+        const clip = Math.abs(dy) > Math.abs(dx)
+          ? (dy < 0 ? "walk-up" : "walk-down")
+          : "walk";
+        if (clip === "walk") {
+          if (Math.abs(dx) > 1) dagney.face(dx);
+        } else {
+          dagney.face(1);
+        }
+        if (dagney.animationName !== clip) dagney.play(clip);
+      }
+    } else if (dagney && (dagney.animationName === "walk" || dagney.animationName === "walk-up" || dagney.animationName === "walk-down")) {
+      dagney.play("idle");
+    }
+    if (dagney) dagney.update(dt);
+    requestAnimationFrame(frame);
+  }
+
+  const LOOK = {
+    sky: ["The sky is still blue, with a pink hem where the day gave up."],
+    moon: ["A thin moon, already up, as if the train were running late for night."],
+    mountains: ["Violet mountains behind the train, each ridge paler than the last."],
+    roof: ["The platform roof is iron and shade. The tiles keep the dusk off the bench."],
+    wires: ["Wires run from a pole to the next, low enough to matter, high enough to ignore."],
+    clock: ["The station clock has a pale face and hands that have made up their mind."],
+    signal: ["A signal lamp leans out, red glass, waiting for someone to need it."],
+    train: [
+      "The Taggart Comet. A silver engine, headlamp lit, two warm lights low on the nose.",
+      "Cars trail off to the right. The windows are dark. Nobody is waving."
+    ],
+    bench: ["A wooden bench under the roof, empty, facing the train as if it had a ticket."],
+    luggage: ["Two suitcases and a smaller bag, stacked and not going anywhere yet."],
+    platform: ["Pale concrete, a yellow line along the lip, and the drop to the rails."],
+    cart: ["A low luggage cart sits at the near corner, empty and a little in the way."],
+    tracks: ["The John Galt Line. Two rails and a run of ties, grass coming up between them."]
+  };
+  let reading = null;
+  function read(id) {
+    const pages = LOOK[id];
+    if (!pages) return;
+    const index = reading && reading.id === id ? (reading.index + 1) % pages.length : 0;
+    reading = { id, index };
+    const more = index < pages.length - 1 ? " …" : "";
+    drawLine(pages[index] + more);
+  }
+  for (const spot of play.querySelectorAll(".hotspot")) {
+    spot.addEventListener("pointerenter", () => {
+      if (verb !== "look") return;
+      reading = null;
+      drawLine("Look at " + spot.dataset.name);
+    });
+    spot.addEventListener("pointerleave", () => {
+      if (verb === "look" && lineText.textContent.startsWith("Look at ")) {
+        reading = null;
+        drawLine(lines.look);
+      }
+    });
+    spot.addEventListener("click", (event) => {
+      event.stopPropagation();
+      if (verb === "look") read(spot.dataset.id);
+    });
+  }
+
+  play.addEventListener("click", (event) => {
+    if (event.target.closest(".hotspot")) return;
+    if (verb === "look") { read("platform"); return; }
+    if (!dagney || verb !== "walk") return;
+    const rect = play.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * PLAY_W;
+    const y = ((event.clientY - rect.top) / rect.height) * PLAY_H;
+    goal = closestOnGround(x, y);
+    drawLine("Walk to…");
+  });
+
+  select(document.querySelector('[data-verb="walk"]'));
+  requestAnimationFrame(frame);
+
+  Character.load("characters/dagney/character.json?v=4").then((actor) => {
+    dagney = actor;
+    window.actor = actor;
+    play.append(actor.element);
+    actor.play("idle").position(spot[0], spot[1]).setScale(depthScale(spot[1])).face(1);
+  });
+</script>
+</body>
+</html>

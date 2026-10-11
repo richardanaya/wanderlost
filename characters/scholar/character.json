@@ -1,0 +1,352 @@
+{
+  "name": "scholar",
+  "anchor": "feet",
+  "animations": {
+    "idle": {
+      "fps": 1,
+      "loop": true,
+      "frames": [
+        "idle"
+      ]
+    },
+    "talk": {
+      "fps": 1,
+      "loop": true,
+      "frames": [
+        "talk"
+      ]
+    },
+    "walk": {
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        "walk-1",
+        "walk-2",
+        "walk-3",
+        "walk-4",
+        "walk-5",
+        "walk-6",
+        "walk-7",
+        "walk-8",
+        "walk-9",
+        "walk-10",
+        "walk-11",
+        "walk-12",
+        "walk-13",
+        "walk-14",
+        "walk-15",
+        "walk-16"
+      ]
+    },
+    "crouch": {
+      "fps": 3,
+      "loop": true,
+      "frames": [
+        "idle",
+        "crouch-down",
+        "crouch-idle",
+        "crouch-idle",
+        "stand-up",
+        "idle"
+      ]
+    },
+    "pick-up": {
+      "fps": 3,
+      "loop": true,
+      "frames": [
+        "idle",
+        "crouch-down",
+        "pick-up",
+        "pick-up",
+        "stand-up",
+        "idle"
+      ]
+    },
+    "inspect": {
+      "fps": 3,
+      "loop": true,
+      "frames": [
+        "idle",
+        "inspect",
+        "inspect",
+        "stand-up",
+        "idle"
+      ]
+    },
+    "use": {
+      "fps": 1,
+      "loop": true,
+      "frames": [
+        "use"
+      ]
+    },
+    "push": {
+      "fps": 1,
+      "loop": true,
+      "frames": [
+        "push"
+      ]
+    },
+    "pull": {
+      "fps": 1,
+      "loop": true,
+      "frames": [
+        "pull"
+      ]
+    },
+    "look-up": {
+      "fps": 1,
+      "loop": true,
+      "frames": [
+        "look-up"
+      ]
+    },
+    "look-down": {
+      "fps": 1,
+      "loop": true,
+      "frames": [
+        "look-down"
+      ]
+    },
+    "look-left": {
+      "fps": 1,
+      "loop": true,
+      "frames": [
+        "look-left"
+      ]
+    },
+    "look-right": {
+      "fps": 1,
+      "loop": true,
+      "frames": [
+        "look-right"
+      ]
+    },
+    "turn-around": {
+      "fps": 1,
+      "loop": true,
+      "frames": [
+        "turn-around"
+      ]
+    }
+  },
+  "frames": {
+    "idle": {
+      "src": "characters/scholar/idle.png",
+      "w": 158,
+      "h": 365,
+      "ax": 88,
+      "ay": 365
+    },
+    "talk": {
+      "src": "characters/scholar/talk.png",
+      "w": 222,
+      "h": 363,
+      "ax": 86,
+      "ay": 363
+    },
+    "crouch-down": {
+      "src": "characters/scholar/crouch-down.png",
+      "w": 177,
+      "h": 256,
+      "ax": 45,
+      "ay": 256
+    },
+    "pick-up": {
+      "src": "characters/scholar/pick-up.png",
+      "w": 159,
+      "h": 187,
+      "ax": 86,
+      "ay": 187
+    },
+    "crouch-idle": {
+      "src": "characters/scholar/crouch-idle.png",
+      "w": 144,
+      "h": 202,
+      "ax": 74,
+      "ay": 202
+    },
+    "stand-up": {
+      "src": "characters/scholar/stand-up.png",
+      "w": 146,
+      "h": 274,
+      "ax": 70,
+      "ay": 274
+    },
+    "inspect": {
+      "src": "characters/scholar/inspect.png",
+      "w": 186,
+      "h": 259,
+      "ax": 80,
+      "ay": 259
+    },
+    "use": {
+      "src": "characters/scholar/use.png",
+      "w": 206,
+      "h": 318,
+      "ax": 77,
+      "ay": 318
+    },
+    "push": {
+      "src": "characters/scholar/push.png",
+      "w": 223,
+      "h": 282,
+      "ax": 87,
+      "ay": 282
+    },
+    "pull": {
+      "src": "characters/scholar/pull.png",
+      "w": 185,
+      "h": 267,
+      "ax": 98,
+      "ay": 267
+    },
+    "look-up": {
+      "src": "characters/scholar/look-up.png",
+      "w": 143,
+      "h": 311,
+      "ax": 74,
+      "ay": 311
+    },
+    "look-down": {
+      "src": "characters/scholar/look-down.png",
+      "w": 134,
+      "h": 302,
+      "ax": 74,
+      "ay": 302
+    },
+    "look-left": {
+      "src": "characters/scholar/look-left.png",
+      "w": 147,
+      "h": 312,
+      "ax": 77,
+      "ay": 312
+    },
+    "look-right": {
+      "src": "characters/scholar/look-right.png",
+      "w": 145,
+      "h": 309,
+      "ax": 70,
+      "ay": 309
+    },
+    "turn-around": {
+      "src": "characters/scholar/turn-around.png",
+      "w": 142,
+      "h": 313,
+      "ax": 70,
+      "ay": 313
+    },
+    "walk-1": {
+      "src": "characters/scholar/walk-1.png?v=13",
+      "w": 203,
+      "h": 443,
+      "ax": 102,
+      "ay": 443
+    },
+    "walk-2": {
+      "src": "characters/scholar/walk-2.png?v=13",
+      "w": 177,
+      "h": 439,
+      "ax": 91,
+      "ay": 439
+    },
+    "walk-3": {
+      "src": "characters/scholar/walk-3.png?v=13",
+      "w": 165,
+      "h": 442,
+      "ax": 82,
+      "ay": 442
+    },
+    "walk-4": {
+      "src": "characters/scholar/walk-4.png?v=13",
+      "w": 186,
+      "h": 453,
+      "ax": 93,
+      "ay": 453
+    },
+    "walk-5": {
+      "src": "characters/scholar/walk-5.png?v=13",
+      "w": 216,
+      "h": 486,
+      "ax": 109,
+      "ay": 486
+    },
+    "walk-6": {
+      "src": "characters/scholar/walk-6.png?v=13",
+      "w": 181,
+      "h": 440,
+      "ax": 96,
+      "ay": 440
+    },
+    "walk-7": {
+      "src": "characters/scholar/walk-7.png?v=13",
+      "w": 173,
+      "h": 441,
+      "ax": 89,
+      "ay": 441
+    },
+    "walk-8": {
+      "src": "characters/scholar/walk-8.png?v=13",
+      "w": 185,
+      "h": 454,
+      "ax": 96,
+      "ay": 454
+    },
+    "walk-9": {
+      "src": "characters/scholar/walk-9.png?v=13",
+      "w": 202,
+      "h": 439,
+      "ax": 104,
+      "ay": 439
+    },
+    "walk-10": {
+      "src": "characters/scholar/walk-10.png?v=13",
+      "w": 191,
+      "h": 432,
+      "ax": 103,
+      "ay": 432
+    },
+    "walk-11": {
+      "src": "characters/scholar/walk-11.png?v=13",
+      "w": 185,
+      "h": 433,
+      "ax": 92,
+      "ay": 433
+    },
+    "walk-12": {
+      "src": "characters/scholar/walk-12.png?v=13",
+      "w": 194,
+      "h": 450,
+      "ax": 93,
+      "ay": 450
+    },
+    "walk-13": {
+      "src": "characters/scholar/walk-13.png?v=13",
+      "w": 222,
+      "h": 491,
+      "ax": 110,
+      "ay": 491
+    },
+    "walk-14": {
+      "src": "characters/scholar/walk-14.png?v=13",
+      "w": 187,
+      "h": 431,
+      "ax": 97,
+      "ay": 431
+    },
+    "walk-15": {
+      "src": "characters/scholar/walk-15.png?v=13",
+      "w": 208,
+      "h": 453,
+      "ax": 97,
+      "ay": 453
+    },
+    "walk-16": {
+      "src": "characters/scholar/walk-16.png?v=13",
+      "w": 183,
+      "h": 444,
+      "ax": 97,
+      "ay": 444
+    }
+  }
+}

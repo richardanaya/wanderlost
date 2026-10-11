@@ -1,0 +1,609 @@
+{
+  "name": "adventurer",
+  "anchor": "feet",
+  "animations": {
+    "idle": {
+      "fps": 0.333,
+      "loop": true,
+      "frames": [
+        "idle0",
+        "idle1",
+        "idle2",
+        "idle3"
+      ]
+    },
+    "walk": {
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        "walkright0",
+        "walkright1",
+        "walkright2",
+        "walkright3",
+        "walkright4",
+        "walkright5",
+        "walkright6",
+        "walkright7"
+      ]
+    },
+    "talk": {
+      "fps": 6,
+      "loop": true,
+      "frames": [
+        "talkright0",
+        "talkright1",
+        "talkright2",
+        "talkright3"
+      ]
+    },
+    "pick-up": {
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        "pickup0",
+        "pickup1",
+        "pickup2",
+        "pickup3",
+        "pickup2",
+        "pickup1",
+        "pickup0"
+      ]
+    },
+    "reach": {
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        "reachright0",
+        "reachright1",
+        "reachright2",
+        "reachright3",
+        "reachright2",
+        "reachright1",
+        "reachright0"
+      ]
+    },
+    "walk-up": {
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        "walkup0",
+        "walkup1",
+        "walkup2",
+        "walkup3",
+        "walkup4",
+        "walkup5",
+        "walkup6",
+        "walkup7"
+      ]
+    },
+    "walk-down": {
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        "walkdown0",
+        "walkdown1",
+        "walkdown2",
+        "walkdown3",
+        "walkdown4",
+        "walkdown5",
+        "walkdown6",
+        "walkdown7"
+      ]
+    },
+    "look-down": {
+      "fps": 2,
+      "loop": true,
+      "frames": [
+        "lookdown"
+      ]
+    },
+    "crouch": {
+      "fps": 2,
+      "loop": true,
+      "frames": [
+        "crouch"
+      ]
+    },
+    "push_or_pull": {
+      "fps": 2,
+      "loop": true,
+      "frames": [
+        "push"
+      ]
+    },
+    "inspect": {
+      "fps": 2,
+      "loop": true,
+      "frames": [
+        "inspect"
+      ]
+    },
+    "look-up": {
+      "fps": 2,
+      "loop": true,
+      "frames": [
+        "lookup0"
+      ]
+    },
+    "point": {
+      "fps": 2,
+      "loop": true,
+      "frames": [
+        "point"
+      ]
+    },
+    "crossed": {
+      "fps": 2,
+      "loop": true,
+      "frames": [
+        "crossed"
+      ]
+    },
+    "headache": {
+      "fps": 2,
+      "loop": true,
+      "frames": [
+        "headache"
+      ]
+    }
+  },
+  "frames": {
+    "idle0": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 1,
+      "y": 1
+    },
+    "idle1": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 56,
+      "y": 1
+    },
+    "idle2": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 111,
+      "y": 1
+    },
+    "idle3": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 166,
+      "y": 1
+    },
+    "walkright0": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 79,
+      "x": 221,
+      "y": 1
+    },
+    "walkright1": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 79,
+      "x": 276,
+      "y": 1
+    },
+    "walkright2": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 78,
+      "x": 1,
+      "y": 93
+    },
+    "walkright3": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 78,
+      "x": 56,
+      "y": 93
+    },
+    "walkright4": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 79,
+      "x": 111,
+      "y": 93
+    },
+    "walkright5": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 79,
+      "x": 166,
+      "y": 93
+    },
+    "walkright6": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 78,
+      "x": 221,
+      "y": 93
+    },
+    "walkright7": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 276,
+      "y": 93
+    },
+    "talkright0": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 79,
+      "x": 1,
+      "y": 185
+    },
+    "talkright1": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 79,
+      "x": 56,
+      "y": 185
+    },
+    "talkright2": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 79,
+      "x": 111,
+      "y": 185
+    },
+    "talkright3": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 79,
+      "x": 166,
+      "y": 185
+    },
+    "pickup0": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 79,
+      "x": 221,
+      "y": 185
+    },
+    "pickup1": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 276,
+      "y": 185
+    },
+    "pickup2": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 78,
+      "x": 1,
+      "y": 277
+    },
+    "pickup3": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 78,
+      "x": 56,
+      "y": 277
+    },
+    "reachright0": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 79,
+      "x": 111,
+      "y": 277
+    },
+    "reachright1": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 78,
+      "x": 166,
+      "y": 277
+    },
+    "reachright2": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 78,
+      "x": 221,
+      "y": 277
+    },
+    "reachright3": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 78,
+      "x": 276,
+      "y": 277
+    },
+    "lookdown": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 56,
+      "y": 185,
+      "sheet": "extended"
+    },
+    "turn": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 111,
+      "y": 185,
+      "sheet": "extended"
+    },
+    "crouch": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 166,
+      "y": 185,
+      "sheet": "extended"
+    },
+    "push": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 276,
+      "y": 185,
+      "sheet": "extended"
+    },
+    "reachfront": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 1,
+      "y": 277,
+      "sheet": "extended"
+    },
+    "inspect": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 56,
+      "y": 277,
+      "sheet": "extended"
+    },
+    "turnside": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 221,
+      "y": 93,
+      "sheet": "extended"
+    },
+    "lookup0": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 0,
+      "y": 0,
+      "sheet": "lookup0"
+    },
+    "walkup0": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 0,
+      "y": 0,
+      "sheet": "normal-walk"
+    },
+    "walkup1": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 54,
+      "y": 0,
+      "sheet": "normal-walk"
+    },
+    "walkup2": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 108,
+      "y": 0,
+      "sheet": "normal-walk"
+    },
+    "walkup3": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 162,
+      "y": 0,
+      "sheet": "normal-walk"
+    },
+    "walkup4": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 216,
+      "y": 0,
+      "sheet": "normal-walk"
+    },
+    "walkup5": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 270,
+      "y": 0,
+      "sheet": "normal-walk"
+    },
+    "walkup6": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 324,
+      "y": 0,
+      "sheet": "normal-walk"
+    },
+    "walkup7": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 378,
+      "y": 0,
+      "sheet": "normal-walk"
+    },
+    "walkdown0": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 0,
+      "y": 80,
+      "sheet": "normal-walk"
+    },
+    "walkdown1": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 54,
+      "y": 80,
+      "sheet": "normal-walk"
+    },
+    "walkdown2": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 108,
+      "y": 80,
+      "sheet": "normal-walk"
+    },
+    "walkdown3": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 162,
+      "y": 80,
+      "sheet": "normal-walk"
+    },
+    "walkdown4": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 216,
+      "y": 80,
+      "sheet": "normal-walk"
+    },
+    "walkdown5": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 270,
+      "y": 80,
+      "sheet": "normal-walk"
+    },
+    "walkdown6": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 324,
+      "y": 80,
+      "sheet": "normal-walk"
+    },
+    "walkdown7": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 378,
+      "y": 80,
+      "sheet": "normal-walk"
+    },
+    "point": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 1,
+      "y": 277,
+      "sheet": "extended"
+    },
+    "crossed": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 166,
+      "y": 277,
+      "sheet": "extended"
+    },
+    "headache": {
+      "w": 54,
+      "h": 80,
+      "ax": 26,
+      "ay": 80,
+      "x": 221,
+      "y": 277,
+      "sheet": "extended"
+    }
+  },
+  "atlas": {
+    "src": "characters/adventurer/atlas.png?v=10",
+    "w": 369,
+    "h": 369
+  },
+  "extended": {
+    "src": "characters/adventurer/atlas-extended.png?v=8",
+    "w": 369,
+    "h": 369
+  },
+  "sheets": {
+    "lookup0": {
+      "src": "characters/adventurer/lookup0.png?v=1",
+      "w": 54,
+      "h": 80
+    },
+    "normal-walk": {
+      "src": "characters/adventurer/normal-walk.png?v=1",
+      "w": 432,
+      "h": 160
+    }
+  }
+}
