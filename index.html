@@ -579,7 +579,7 @@
   // The stance, not a single sole point. It grows with the figure.
   function onGround(x, y) {
     const scale = window.actor ? window.actor.scale : 1;
-    const halfW = Math.max(8, 12 * scale);
+    const halfW = Math.max(10, 16 * scale);
     const halfH = Math.max(3, 4 * scale);
     for (const px of [x - halfW, x, x + halfW]) {
       for (const py of [y - halfH, y + halfH]) {
